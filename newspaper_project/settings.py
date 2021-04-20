@@ -34,8 +34,10 @@ INSTALLED_APPS = [
     # Local
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
+
     # 3rd Party
     'crispy_forms',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
