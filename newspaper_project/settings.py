@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-ja7cl#c-=*(%f839)o_mess=b@7_@0cogymreohfvq6yi6da%%
 DEBUG = True
 
 ALLOWED_HOSTS = ['newspaper-shaunak.herokuapp.com',
-                 '127.0.0.1:8000']
+                 '127.0.0.1',]
 
 
 # Application definition
@@ -114,7 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'IST'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
