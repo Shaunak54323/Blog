@@ -8,9 +8,9 @@
                 <span class="text-muted">by {{ article.author }} |
                     {{ article.date }}</span>
                 <div class="text-right">
-                    <a href="{% url 'article_edit' article.pk %}">Edit</a> |
-                    <a href="{% url 'article_delete' article.pk %}">Delete</a> |
-                    <a href="{% url 'article_comment' article.pk %}">Comment</a>
+                    <a data-toggle="tooltip" data-placement="top" title="Edit this Blog." class="btn btn-info" href="{% url 'article_edit' article.pk %}">Edit</a>
+                    <a data-toggle="tooltip" data-placement="top" title="Comment of this Blog" class="btn btn-success" href="{% url 'article_comment' article.pk %}">Comment</a>
+                    <a data-toggle="tooltip" data-placement="top" title="Delete this blog" class="btn btn-danger" href="{% url 'article_delete' article.pk %}">Delete</a>
                 </div>
             </div>
             <div class="card-body">
