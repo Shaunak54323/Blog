@@ -4,9 +4,36 @@
     <div class="jumbotron">
         <h1 class="display-4">Blogging app</h1>
         <p class="lead">A Blogging webapp built by Shaunak using Django.</p>
+        {% if not user.is_authenticated %}
         <p class="lead">
-            <a class="btn btn-primary btn-lg" href="{% url 'article_list' %}"
-               role="button">View All Blogs</a>
-        </p>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary  btn-lg" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop">
+                View all Blogs
+            </button>
+            <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                     tabindex="-1"
+                     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">You need to log in to continue.</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-footer">
+                                <a role="button" href="{% url 'login' %}" class="btn btn-primary">Log In</a>
+                                <a role="button" href="{% url 'signup' %}" class="btn btn-primary">SignUp</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <p class="lead">
+                    <a class="btn btn-primary btn-lg" href="{% url 'article_list' %}"
+                       role="button">View All Blogs</a>
+                </p>
+            {% endif %}
     </div>
 {% endblock content %}
