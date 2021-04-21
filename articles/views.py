@@ -57,7 +57,7 @@ class ArticleCreateView(LoginRequiredMixin, CreateView):
 
 class CommentCreateView(LoginRequiredMixin, CreateView):
     model = Comment
-    fields = ('article', 'author', 'comment',)
+    fields = ('article', 'comment',)
     template_name = 'article_comment.html'
     login_url = 'login'
 
