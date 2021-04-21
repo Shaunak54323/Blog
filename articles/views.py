@@ -55,14 +55,13 @@ class ArticleCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class ArticleCommentView(LoginRequiredMixin, CreateView):
+class CommentCreateView(LoginRequiredMixin, CreateView):
     model = Comment
-    fields = ('article', 'author', 'comment')
+    fields = ('article', 'author', 'comment',)
     template_name = 'article_comment.html'
     login_url = 'login'
 
-    def dispatch(self, request, *args, **kwargs):
-        obj = self.get_object()
-        if obj.author != self.request.user:
-            raise PermissionDenied
-        return super().dispatch(request, *args, **kwargs)
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
