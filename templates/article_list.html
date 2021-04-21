@@ -8,11 +8,14 @@
                 <span class="text-muted">by {{ article.author }} |
                     {{ article.date }}</span>
             </div>
-            <div class="card-body">
-                <p>{{ article.body }}</p>
+        <div class="card-body card-header">
+            <p>{{ article.body }}</p>
+        </div>
+            <div class="card-body card-footer text-center text-muted">
                 <!-- Changes start here! -->
                 <a href="{% url 'article_edit' article.pk %}">Edit</a> |
-                <a href="{% url 'article_delete' article.pk %}">Delete</a>
+                <a href="{% url 'article_delete' article.pk %}">Delete</a> |
+                <a href="{% url 'article_comment' article.pk %}">Comment</a>
             </div>
             <div class="card-footer">
                 {% for comment in article.comments.all %}
