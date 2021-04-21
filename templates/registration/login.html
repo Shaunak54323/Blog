@@ -1,13 +1,22 @@
 {% extends 'base.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
 {% block title %}Log In{% endblock title %}
 {% block content %}
-    <h2 class="text-center">Log In</h2>
-    <br>
-    <form method="post" class="text-center">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <br>
-        <button class="btn btn-success ml-2" type="submit">Log In</button>
-        <a class="btn btn-primary" href="{% url 'signup' %}" role="button">SignUp</a>
-    </form>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="page-header">
+                <h2 class="text-center">Log In</h2>
+            </div>
+            <br>
+            <form method="post" class="text-center">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <br>
+                <button class="btn btn-success ml-2" type="submit">Log In</button>
+                <a class="btn btn-primary" href="{% url 'signup' %}" role="button">SignUp</a>
+            </form>
+        </div>
+    </div>
 {% endblock content %}
