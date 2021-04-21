@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from django.core.exceptions import PermissionDenied
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy
 from .models import Article, Comment
@@ -27,7 +27,7 @@ class ArticleUpdateView(LoginRequiredMixin, UpdateView):
     def dispatch(self, request, *args, **kwargs):
         obj = self.get_object()
         if obj.author != self.request.user:
-            raise PermissionDenied
+            return render(request, 'ERROR.html')
         return super().dispatch(request, *args, **kwargs)
 
 
@@ -40,7 +40,7 @@ class ArticleDeleteView(LoginRequiredMixin, DeleteView):
     def dispatch(self, request, *args, **kwargs):
         obj = self.get_object()
         if obj.author != self.request.user:
-            raise PermissionDenied
+            return render(request, 'ERROR.html')
         return super().dispatch(request, *args, **kwargs)
 
 
